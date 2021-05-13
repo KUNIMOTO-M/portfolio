@@ -35,8 +35,9 @@ h1 {
 
 .alert {
   z-index: 100;
-  position: relative;
+  position: absolute;
   margin-bottom: 0;
+
 }
 
 .alert-notice {
@@ -177,8 +178,15 @@ width: 300px;
   margin-left: 300px;
 }
 
+.microposts {
+  width:800px;
+}
+
 .title_container {
 background-color: #21054d;
+position: fixed;
+width: 100%;
+z-index: 5;
 }
 
 .content {
@@ -189,6 +197,65 @@ background-color: #21054d;
   color: #fff;
 }
 
+.notice_container {
+padding-top: 62px;
+}
+
+/* マイクロポスト　*/
+
+.notice_container_item {
+margin: 2em auto;
+padding: 1em;
+width: 90%;
+background-color: #fff; /* 背景色 */
+border: 1px solid #ccc; /* 枠線 */
+  }
+.notice_container_item2 {
+  display: flex;
+}
+
+.microposts_info {
+  display: flex;
+}
+
+.microposts_info_user {
+  display: flex;
+}
+
+.user_image {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px; /*追加*/
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+}
+
+.microposts_contents {
+  padding-left: 8px;
+}
+
+.micropost_user {
+  font-weight: bold;
+  font-size: 18px;
+}
+.micropost_time {
+  padding-left: 10px;
+}
+
+.microposts_delete {
+  padding-left: 10px;
+}
+
+.micropost_content {
+  font-size: 15px;
+}
 /*
 .title_container{
   width: 720px;

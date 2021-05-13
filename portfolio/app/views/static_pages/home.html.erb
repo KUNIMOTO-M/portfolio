@@ -1,32 +1,45 @@
 
 <% if login? %>
-<div class="main_container">
   <div class="microposts">
     <div class="title_container"> 
       <h1 class="content">マイクロポスト</h1>
     </div> 
     
-      <div class="notice_container">
-      <%  @microposts.each do |micropost| %>
-        <div class="notice_container_item">
-            <div class="notice_container_item_image">
-              <% if micropost.user.image? %>                                                              
-                <%= image_tag micropost.user.image.url(:thumb100) %>
-              <% end %>
-            </div>
-            <ul style="list-style: none;" class="notice_container_item_info">
-              <li>投稿者: <%= micropost.user.name%></li>
-              <li class="timestap">
-                Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-              </li>
-              <h3><%= micropost.content%></h3>
-                <%if current_user?(micropost.user)%>
-                <%= link_to "削除", micropost_path(micropost.id), method: :delete,
-                              data: { confirm: "You sure?"}%>
-              <% end %>
-            </ul>
-        </div>
-      <% end %>
+    <div class="notice_container">
+        <%  @microposts.each do |micropost| %>
+          <div class="notice_container_item">
+            <div class="notice_container_item2">
+              <div class="notice_container_item_image">
+                <div class="user_image">
+                  <% if micropost.user.image? %>                                                              
+                    <%= image_tag micropost.user.image.url(:thumb100), class: "image" %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="microposts_contents">
+                <div class="microposts_info">
+                  <div class="microposts_info_user">
+                    <div class="micropost_user">
+                       <%= micropost.user.name%>
+                    </div>
+                    <div class="micropost_time">
+                        Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+                    </div>
+                  </div>
+                  <div class="microposts_delete">
+                    <%if current_user?(micropost.user)%>
+                      <%= link_to "削除", micropost_path(micropost.id), method: :delete,
+                                    data: { confirm: "You sure?"}%>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="micropost_content">
+                  <%= micropost.content%>
+                </div>
+              </div>
+          </div>
+          </div>
+        <% end %>
     </div>
   </div>
 
@@ -39,25 +52,8 @@
       <%= f.submit"投稿", class: "btn btn-primary" %>
       <% end %>
   </div>
-</div>
 
 
-<% else %>
-<div class="hero" style="height:	837px;">
-		<div class="hero_inner">
-			<div class="hero_heading">
-				<div class="hero_title">
-				PORTFOLIO
-				</div>
-        <div class="btns">
-          <button class="btn btn-primary">
-            <%= link_to "新規登録", sign_up_path  %>
-          </button>
-          <button class="btn btn-primary">
-            <%= link_to "ログイン", login_path %>
-          </button>
-				</div>
-			</div>
-		</div>
+
 
 <% end %>
