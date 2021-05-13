@@ -14,20 +14,26 @@
 <![endif]-->
   </head>
   <body>
-    <header> 
+  <div class="wrap">
       <% if login? %>
-      <nav class="mnav">
-      <h2 class="application"><%= link_to "MY PORT", root_path %></h2>
-       <ul style="list-style: none;" class="mnav__menu" >
-        <li class="mnav__menu__item"><%= link_to "ホーム", root_path %></li>
-        <li class="mnav__menu__item"><a><%= link_to "検索", search_notices_path %></a></li>
-        <li class="mnav__menu__item"><%= link_to "掲示板", notices_path %></li>
-        <li class="mnav__menu__item"><%= link_to "メッセージ", rooms_path %></li>
-        <li class="mnav__menu__item"><%= link_to "プロフィール", "/users/#{current_user.id}" %></li>
-        <li class="mnav__menu__item"><%= link_to "ログアウト", logout_path, method: :delete %></li>
-        <li class="mnav__menu__item"><%= link_to "設定", set_users_path %></li>
-       </ul> 
-        </nav>
+      <div class="menu">
+        <div class="menu_inner">
+          <div class="hrader_logo">
+            <h1 class="logo logo">
+              <%= link_to "PROTFOLIO", root_path, class: "logo_image" %>
+            </h1>
+          </div>
+          <ul class="menu_list" >
+            <li class="menu_list_li"> <%= link_to "ホーム", root_path, class:"menu_list_item" %></li>
+            <li class="menu_list_li"> <%= link_to "検索", search_notices_path, class:"menu_list_item" %></li>
+            <li class="menu_list_li"> <%= link_to "掲示板", notices_path, class:"menu_list_item" %></li>
+            <li class="menu_list_li"> <%= link_to "メッセージ", rooms_path, class:"menu_list_item" %></li>
+            <li class="menu_list_li"> <%= link_to "プロフィール", "/users/#{current_user.id}", class:"menu_list_item" %></li>
+            <li class="menu_list_li"> <%= link_to "ログアウト", logout_path, method: :delete, class:"menu_list_item" %></li>
+            <li class="menu_list_li"> <%= link_to "設定", set_users_path, class:"menu_list_item" %></li>
+          </ul> 
+        </div>
+      </div>
       <% else %>
       <div class="header active">
         <div class="header_logo">
@@ -58,11 +64,10 @@
         </nav>
       </div>
       <% end %>
-     
-    </header>
      <% flash.each do |message_type, message|%>
        <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
       <% end %>
     <%= yield %>
+   </div>
   </body>
 </html>

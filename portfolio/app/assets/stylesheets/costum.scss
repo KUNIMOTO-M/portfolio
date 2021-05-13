@@ -33,31 +33,21 @@ h1 {
     background-repeat: no-repeat;
 }
 
+.alert {
+  z-index: 100;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.alert-notice {
+  color: rgb(6, 131, 37);
+  background-color: #9bf1a6;
+  border-color: #f7f763;
+  }
+
+
 
 /* header */
-.application {
-  
-}
-.mnav {
-  position: fixed;
-  width: 330px;
-  text-align: center;
-  background-color:whitesmoke;
-  height: 100%;
-}
-
-.mnav__menu {
-  
-}
-
-.mnav__menu__item {
-  font-size: 20px;
-  padding-top: 30px;
-}
-
-.mnav__menu__item a{
-  
-}
 
 .header.active {
   padding:5px 30px;
@@ -138,14 +128,68 @@ h1 {
   margin-bottom:20px;
 }
 
+.wrap {
+  position: relative;
+}
+
 .main {
   margin-left: 40px;
 }
-/* 掲示板*/
-.main_container {
-  width: 720px;
+
+
+.menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    width: 300px;
+    height: 100%;
+    background: #21054d;
+
+ }
+
+.menu .menu_inner {
+height: 100%;
+position: relative;
+z-index: 10;
+width: 300px;
 }
 
+.menu_list{
+  width: 100%;
+  text-align: center;
+  margin-top: 80px;
+  }
+
+.menu_list_li {
+  margin-bottom: 30px;
+}
+.menu_list_item {
+  color:white;
+  font-size: 15px;
+  font-weight: bold;
+}
+/* 掲示板*/
+
+.main_container {
+  margin-left: 300px;
+}
+
+.title_container {
+background-color: #21054d;
+}
+
+.content {
+  text-align: left;
+  font-size: 20px;
+  margin:0;
+  padding:20px 10px;
+  color: #fff;
+}
+
+/*
 .title_container{
   width: 720px;
   z-index:999;

@@ -1,43 +1,45 @@
 
 <% if login? %>
 <div class="main_container">
-  <div class="title_container"> 
-    <h2 class="title">マイクロポスト</h2>
-  </div> 
-  
-     <div class="notice_container">
-    <%  @microposts.each do |micropost| %>
-      <div class="notice_container_item">
-          <div class="notice_container_item_image">
-            <% if micropost.user.image? %>                                                              
-              <%= image_tag micropost.user.image.url(:thumb100) %>
-            <% end %>
-          </div>
-          <ul style="list-style: none;" class="notice_container_item_info">
-            <li>投稿者: <%= micropost.user.name%></li>
-            <li class="timestap">
-              Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-            </li>
-            <h3><%= micropost.content%></h3>
-              <%if current_user?(micropost.user)%>
-              <%= link_to "削除", micropost_path(micropost.id), method: :delete,
-                            data: { confirm: "You sure?"}%>
-            <% end %>
-          </ul>
-      </div>
-    <% end %>
+  <div class="microposts">
+    <div class="title_container"> 
+      <h1 class="content">マイクロポスト</h1>
+    </div> 
+    
+      <div class="notice_container">
+      <%  @microposts.each do |micropost| %>
+        <div class="notice_container_item">
+            <div class="notice_container_item_image">
+              <% if micropost.user.image? %>                                                              
+                <%= image_tag micropost.user.image.url(:thumb100) %>
+              <% end %>
+            </div>
+            <ul style="list-style: none;" class="notice_container_item_info">
+              <li>投稿者: <%= micropost.user.name%></li>
+              <li class="timestap">
+                Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+              </li>
+              <h3><%= micropost.content%></h3>
+                <%if current_user?(micropost.user)%>
+                <%= link_to "削除", micropost_path(micropost.id), method: :delete,
+                              data: { confirm: "You sure?"}%>
+              <% end %>
+            </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="notice_creater">
+      <%= form_with model: @micropost do |f| %>
+      
+      <%= f.label :マイクロポスト %>
+      <%= f.text_field :content, size: 40  %>
+
+      <%= f.submit"投稿", class: "btn btn-primary" %>
+      <% end %>
   </div>
 </div>
-
-<div class="notice_creater">
-    <%= form_with model: @micropost do |f| %>
-    
-    <%= f.label :マイクロポスト %>
-    <%= f.text_field :content, size: 40  %>
-
-    <%= f.submit"投稿", class: "btn btn-primary" %>
-    <% end %>
-  </div>
 
 
 <% else %>
