@@ -1,0 +1,35 @@
+検索項目
+<%= link_to "掲示板", search_notices_path %>
+<%= link_to "ユーザー", search_users_path %>
+<%= link_to "マイクロポスト", search_microposts_path %>
+  <%= form_with url:'/notices/search', method: :get do |f| %>
+	
+  <%= f.label :募集地域 %>
+  <%= f.select :area, Notice.areas.keys, {}, {class: 'hoge'} %>
+
+	<%= f.submit"検索", class: "btn btn-primary" %>
+	<% end %>
+
+  <%= form_tag(search_notices_path, :method => "get") do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag"キーワード検索", class: "btn btn-primary" %>
+  <% end %>
+
+
+<% if @notices  %>
+<% @notices.each do |notice| %>
+  <li>
+  <%=  link_to notice_path(notice) do %>
+  <% if notice.user.image? %>                                                              
+  <%= image_tag notice.user.image.url %> 
+<% end %>
+    <span class="notice_title"><%= notice.notice_title %></span>
+    <span>地域: <%= notice.area %></span>
+    <span class="timestap">
+      Posted <%= time_ago_in_words(notice.created_at) %> ago.
+    </span>
+  <% end %>
+  </li>
+<% end %>
+<% end %>
+

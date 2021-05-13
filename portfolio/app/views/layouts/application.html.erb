@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Portfolio</title>
+    <title>Myport | Home</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                               'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application',
+                               'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+  </script>
+<![endif]-->
   </head>
-
   <body>
+    <header> 
+      <% if login? %>
+      <nav class="mnav">
+      <h2 class="application"><%= link_to "MY PORT", root_path %></h2>
+       <ul style="list-style: none;" class="mnav__menu" >
+        <li class="mnav__menu__item"><%= link_to "ホーム", root_path %></li>
+        <li class="mnav__menu__item"><a><%= link_to "検索", search_notices_path %></a></li>
+        <li class="mnav__menu__item"><%= link_to "掲示板", notices_path %></li>
+        <li class="mnav__menu__item"><%= link_to "メッセージ", rooms_path %></li>
+        <li class="mnav__menu__item"><%= link_to "プロフィール", "/users/#{current_user.id}" %></li>
+        <li class="mnav__menu__item"><%= link_to "ログアウト", logout_path, method: :delete %></li>
+        <li class="mnav__menu__item"><%= link_to "設定", set_users_path %></li>
+       </ul> 
+        </nav>
+      <% else %>
+      <div class="header active">
+        <div class="header_logo">
+          <h1 class="logo">
+            <a class="logo_link">
+              <a class="logo_image">PORTFOLIO</a>
+            </a>
+          </h1>
+        </div>
+        <nav class="global-nav">
+         <ul class="global-nav_list">
+          <li class="global-nav_item">
+            <a>
+              <%= link_to "home", root_path, class: "global-nav_link" %>
+            </a>
+          </li>
+          <li class="global-nav_item">
+            <a>
+              <%= link_to "about", root_path, class:"global-nav_link" %>
+            </a>
+          </li>
+          <li class="global-nav_item">
+            <a>
+             <%= link_to "help", root_path, class:"global-nav_link"%>
+            </a>
+          </li>
+        </ul>
+        </nav>
+      </div>
+      <% end %>
+     
+    </header>
+     <% flash.each do |message_type, message|%>
+       <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
+      <% end %>
     <%= yield %>
   </body>
 </html>

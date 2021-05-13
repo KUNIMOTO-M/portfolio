@@ -1,0 +1,34 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <% if @user.image? %>                                                              
+        <%= image_tag @user.image.url(:thumb100) %>
+      <% end %>
+      <h1><%= @user.name %></h1>
+      <span><%= link_to "プロフィールを見る", @user %></span>
+      <span><b>Microposts:</b> <%= @user.microposts.count %></span>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+    <div class="notice_container">
+    <%  @users.each do |user| %>
+      <div class="notice_container_item">
+        <%=  link_to users_path(user) do %>
+        <span class="notice_title"><%= user.name %></span>
+          <div class="notice_container_item_image">
+            <% if user.image? %>                                                              
+              <%= image_tag user.image.url(:thumb100) %>
+            <% end %>
+          </div>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+      <%= will_paginate %>
+    <% end %>
+  </div>
+</div>
