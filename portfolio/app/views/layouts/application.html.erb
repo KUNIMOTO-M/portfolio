@@ -33,7 +33,7 @@
         <div class="header_logo">
           <h1 class="logo">
             <a class="logo_link">
-              <a class="logo_image">PORTFOLIO</a>
+              <%= link_to "PROTFOLIO", root_path, class: "logo_image"%>
             </a>
           </h1>
         </div>
@@ -46,12 +46,12 @@
           </li>
           <li class="global-nav_item">
             <a>
-              <%= link_to "about", root_path, class:"global-nav_link" %>
+              <%= link_to "about", about_path, class:"global-nav_link" %>
             </a>
           </li>
           <li class="global-nav_item">
             <a>
-             <%= link_to "help", root_path, class:"global-nav_link"%>
+             <%= link_to "help", help_path, class:"global-nav_link"%>
             </a>
           </li>
         </ul>
