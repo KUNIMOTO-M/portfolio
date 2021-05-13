@@ -1,0 +1,25 @@
+検索項目
+<%= link_to "掲示板", search_notices_path %>
+<%= link_to "ユーザー", search_users_path %>
+<%= link_to "マイクロポスト", search_microposts_path %>
+
+  <%= form_tag(search_microposts_path, :method => "get") do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag"キーワード検索", class: "btn btn-primary" %>
+  <% end %>
+
+
+<% if @microposts  %>
+<% @microposts.each do |micropost| %>
+  <li>
+  <% if micropost.user.image? %>                                                              
+  <%= image_tag micropost.user.image.url %> 
+<% end %>
+    <span class="notice_title"><%= micropost.content %></span>
+    <span class="timestap">
+      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    </span>
+  </li>
+<% end %>
+<% end %>
+

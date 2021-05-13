@@ -1,0 +1,22 @@
+<h1>プロフィール編集</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_with model: @user do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+
+		<%= f.label :image %>
+		<%= f.file_field :image %>
+
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+
+    <%= f.label :area %>
+    <%= f.select :area, User.areas.keys, {}, {class: 'hoge'} %>
+
+    <%= f.label	:自己紹介	%>
+		<%= f.text_field :introduction, size: "40x20" %>
+	
+		<%= f.submit %>
+		<% end %>
+	</div>
+</div>

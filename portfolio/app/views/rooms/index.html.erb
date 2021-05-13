@@ -1,0 +1,33 @@
+<div class="main_container">
+  <div class="title_container"> 
+    <h2 class="title">メッセージ</h2>
+  </div> 
+
+  <div class="notice_container">
+  <%#@usersはやり取りしたことのあるユーザー%>
+    <% @users.each do |user| %>
+      <div class="notice_container_item">
+      <% #Entryとuserから同じroomをもつオブジェクトを見つける%>
+      <% @currentUserEntry.each do |cu| %>
+       <% user.entries.each do |u| %>
+         <% if cu.room_id == u.room_id then %>
+           <% @roomId = cu.room_id %>
+           <%#Roomから最後に更新したmessageを取得%>
+           <% message = Room.find(@roomId).messages.last %>
+        <%=  link_to "/rooms/#{@roomId}" do %>
+        <span class="notice_title"><%= user.name%></span>
+        <%= message.content %>
+        <%= message.created_at %>
+          <div class="notice_container_item_image">
+            <% if user.image? %>                                                              
+              <%= image_tag user.image.url(:thumb100) %>
+            <% end %>
+          </div>
+          <% end %>
+          <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

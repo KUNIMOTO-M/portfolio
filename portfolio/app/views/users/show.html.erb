@@ -1,0 +1,42 @@
+<div class="main_container">
+  <h1>ユーザープロフィール</h1>
+  <% if @user.image? %>                                                              
+  <%= image_tag @user.image.url %>
+  <% end %>
+  <p>Name <%= @user.name%></p>
+  <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+  <%= render 'follow_form' if login? %>
+  <p>登録地域　<%= @user.area%></p>
+  <p>自己紹介　<%= @user.introduction%></p>
+</div>
+<%= link_to "編集", edit_user_path(@user.id)  %>
+
+<% if @user.id == current_user.id %>
+<% else %>
+  <% if @isRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "チャットを始める" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+投稿
+<% @notices.each do |notice| %>
+  <li>
+  <%=  link_to notice_path(notice) do %>
+    <span class="notice_title"><%= notice.notice_title %></span>
+    <span>地域: <%= notice.area %></span>
+    <span class="timestap">
+      Posted <%= time_ago_in_words(notice.created_at) %> ago.
+    </span>
+  <% end %>
+  </li>
+<% end %>
+
