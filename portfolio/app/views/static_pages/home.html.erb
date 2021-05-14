@@ -55,8 +55,22 @@
       <% end %>
     </div>
   </div>
-
-
+<% else %>
+		<div class="hero_inner">
+			<div class="hero_heading">
+				<div class="hero_title">
+				PORTFOLIO
+				</div>
+        <div class="btns">
+          <button class="btn btn-primary">
+            <%= link_to "新規登録", sign_up_path  %>
+          </button>
+          <button class="btn btn-primary">
+            <%= link_to "ログイン", login_path %>
+          </button>
+				</div>
+			</div>
+		</div>
 
 
 <% end %>

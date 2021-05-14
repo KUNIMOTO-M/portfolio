@@ -1,31 +1,51 @@
-<div class="main_container">
-  <h1>ユーザープロフィール</h1>
-  <% if @user.image? %>                                                              
-  <%= image_tag @user.image.url %>
-  <% end %>
-  <p>Name <%= @user.name%></p>
-  <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
-  <%= render 'follow_form' if login? %>
-  <p>登録地域　<%= @user.area%></p>
-  <p>自己紹介　<%= @user.introduction%></p>
-</div>
-<%= link_to "編集", edit_user_path(@user.id)  %>
-
-<% if @user.id == current_user.id %>
-<% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
-      <% end %>
-      <%= f.submit "チャットを始める" %>
-    <% end %>
-  <% end %>
-<% end %>
+<div class="microposts">
+  <div class="title_container">
+    <h1 class="content">プロフィール</h1>
+  </div>
+  <div class="profile_main"> 
+  <div class="profile_main2">
+  <div class="profile_info">
+    <div class="profile_info_a">
+      <div class="notice_container_item_image profile_image_area">
+      <div class="user_image2">
+        <% if @user.image? %>                                                              
+          <%= image_tag @user.image.url(:thumb), class: "image2" %>
+        <% end %>
+      </div>
+      </div>
+      <div class="profile_info_b">
+        <div class="profile_info_c">
+          <div class="profile_user_info">
+            <div class="user_name">
+              <%= @user.name%>
+            </div>
+            <p>登録地域　<%= @user.area%></p>
+          </div>
+          <div class="profile_icons">
+            <%= render 'follow_form' if login? %>
+            <% if @user.id == current_user.id %>
+            <% else %>
+              <% if @isRoom == true %>
+                <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+              <% else %>
+                <%= form_for @room do |f| %>
+                  <%= fields_for @entry do |e| %>
+                    <%= e.hidden_field :user_id, :value=> @user.id %>
+                  <% end %>
+                  <%= f.submit "チャットを始める", class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
+            <%end%>
+          </div>
+        </div>
+         <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
+      </div>
+    </div>
+      <p>自己紹介　<%= @user.introduction%></p>
+    <%= link_to "編集", edit_user_path(@user.id)  %>
+  </div>
 
 投稿
 <% @notices.each do |notice| %>
@@ -39,4 +59,6 @@
   <% end %>
   </li>
 <% end %>
-
+</div>
+</div>
+</div>

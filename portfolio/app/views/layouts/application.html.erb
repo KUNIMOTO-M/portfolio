@@ -63,22 +63,6 @@
         </ul>
         </nav>
       </div>
-      <div class="hero" style="height:	837px;">
-		<div class="hero_inner">
-			<div class="hero_heading">
-				<div class="hero_title">
-				PORTFOLIO
-				</div>
-        <div class="btns">
-          <button class="btn btn-primary">
-            <%= link_to "新規登録", sign_up_path  %>
-          </button>
-          <button class="btn btn-primary">
-            <%= link_to "ログイン", login_path %>
-          </button>
-				</div>
-			</div>
-		</div>
       <% end %>
     <%if login?%>  
       <div class="main_container">
@@ -88,11 +72,13 @@
       <%= yield %>
     </div>
     <% else %>
+     <div class="hero" style="height:	837px;">
      <% flash.each do |message_type, message|%>
        <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
       <% end %>
      <%= yield %>
     <% end %>
+    </div>
    </div>
   </body>
 </html>
