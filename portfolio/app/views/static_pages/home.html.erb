@@ -34,7 +34,7 @@
                   </div>
                 </div>
                 <div class="micropost_content">
-                  <%= micropost.content%>
+                  <%= safe_join(micropost.content.split("\n"),tag(:br)) %>
                 </div>
               </div>
           </div>
@@ -43,14 +43,17 @@
     </div>
   </div>
 
-  <div class="notice_creater">
+  <div class="notice_creater_container">
+    <div class="notice_creater">
       <%= form_with model: @micropost do |f| %>
       
-      <%= f.label :マイクロポスト %>
-      <%= f.text_field :content, size: 40  %>
-
+        <%= f.label :マイクロポスト %>
+        <p style="white-space:pre-wrap;">
+        <%= f.text_area :content,placeholder: "Tell everyone more about you!", class: " form" %>
+        </p>
       <%= f.submit"投稿", class: "btn btn-primary" %>
       <% end %>
+    </div>
   </div>
 
 

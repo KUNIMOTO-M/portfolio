@@ -176,10 +176,12 @@ width: 300px;
 
 .main_container {
   margin-left: 300px;
+  display: flex;
 }
 
 .microposts {
   width:800px;
+  
 }
 
 .title_container {
@@ -255,6 +257,24 @@ border: 1px solid #ccc; /* 枠線 */
 
 .micropost_content {
   font-size: 15px;
+}
+/**/
+.notice_creater_container {
+  padding-top:68px;
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 20px;
+    z-index: 5;
+    width: 320px;
+    height: 100%;
+}
+
+.form {
+resize: none;
+width:300px;
+height:300px;
 }
 /*
 .title_container{
