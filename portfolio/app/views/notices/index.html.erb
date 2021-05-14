@@ -1,43 +1,55 @@
-<div class="main_container">
+<div class="posts">
   <div class="title_container"> 
-    <h2 class="title">掲示板</h2>
+    <h1 class="content">掲示板</h1>
   </div> 
 
   <div class="notice_container">
     <%  @notices.each do |notice| %>
-      <div class="notice_container_item">
-        <%=  link_to notice_path(notice) do %>
-        <span class="notice_title"><%= notice.notice_title %></span>
-          <div class="notice_container_item_image">
-            <% if notice.user.image? %>                                                              
-              <%= image_tag notice.user.image.url(:thumb100) %>
-            <% end %>
+      <div class="notice_container_item post_back">
+        <%=  link_to notice_path(notice), class: "notice_container_item2" do %>
+        <div class="notice_container_item_image">
+          <div class="user_image">
+              <% if notice.user.image? %>                                                              
+                <%= image_tag notice.user.image.url(:thumb100), class: "image"%>
+              <% end %>
           </div>
-          <ul style="list-style: none;" class="notice_container_item_info">
-            <li>投稿者: <%= notice.user.name%></li>
-            <li>地域: <%= notice.area %></li>
-            <li class="timestap">
+        </div>
+        <div class="microposts_contents"> 
+          <div class="microposts_info">
+          <div class="microposts_info_user">
+            <div class="micropost_user">
+              投稿者: <%= notice.user.name%>
+            </div>
+            <div class="micropost_area">
+              地域: <%= notice.area %>
+            </div> 
+            <div class="micropost_time">
               Posted <%= time_ago_in_words(notice.created_at) %> ago.
-            </li>
-          </ul>
+            </div>
+          </div>
+          </div>
+          <div class="notice_title">
+            <%= notice.notice_title %>
+          </div>
+        </div>
         <% end %>
       </div>
     <% end %>
   </div>
 </div>
 
-  <div class="notice_creater">
+  <div class="notice_creater_container">
+    <div class="notice_creater">
     <%= form_with model: @notice do |f| %>
     
-    <%= f.label :タイトル %>
-    <%= f.text_field :notice_title, size: 40  %>
+    <%= f.text_field :notice_title,placeholder: "タイトル",class: "post_title",size: 43 %>
 
-    <%= f.label :募集内容 %>
-    <%= f.text_area :notice_body, size: "40x20" %>
+    <%= f.text_area :notice_body, placeholder: "募集内容",class: "form" %>
 
     <%= f.label :募集地域 %>
     <%= f.select :area, Notice.areas.keys, {}, {class: 'hoge'} %>
 
     <%= f.submit"投稿", class: "btn btn-primary" %>
     <% end %>
+    </div>
   </div>

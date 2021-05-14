@@ -211,7 +211,12 @@ padding: 1em;
 width: 90%;
 background-color: #fff; /* 背景色 */
 border: 1px solid #ccc; /* 枠線 */
+border-radius: 30px;
   }
+
+.post_back {
+  background-color: rgb(226, 234, 240)
+}
 .notice_container_item2 {
   display: flex;
 }
@@ -240,7 +245,7 @@ border: 1px solid #ccc; /* 枠線 */
 }
 
 .microposts_contents {
-  padding-left: 8px;
+  padding-left: 16px;
 }
 
 .micropost_user {
@@ -248,6 +253,10 @@ border: 1px solid #ccc; /* 枠線 */
   font-size: 18px;
 }
 .micropost_time {
+  padding-left: 10px;
+}
+
+.micropost_area {
   padding-left: 10px;
 }
 
@@ -260,7 +269,7 @@ border: 1px solid #ccc; /* 枠線 */
 }
 /**/
 .notice_creater_container {
-  padding-top:68px;
+  padding-top:80px;
     display: block;
     position: fixed;
     top: 0;
@@ -275,6 +284,20 @@ border: 1px solid #ccc; /* 枠線 */
 resize: none;
 width:300px;
 height:300px;
+}
+/* 掲示板　*/
+.posts {
+  width:800px;
+}
+
+.notice_title {
+  font-size: 40px;
+  text-align: center;
+}
+
+.post_title {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 /*
 .title_container{
