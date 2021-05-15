@@ -72,13 +72,13 @@
       <%= yield %>
     </div>
     <% else %>
-     <div class="hero" style="height:	837px;">
-     <% flash.each do |message_type, message|%>
-       <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
-      <% end %>
-     <%= yield %>
-    <% end %>
+    <div class="hero" style="height:	837px;">
+        <% flash.each do |message_type, message|%>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
+        <% end %>
+      <%= yield %>
     </div>
+    <% end %>
    </div>
   </body>
 </html>

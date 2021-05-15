@@ -2,11 +2,12 @@
   <div class="title_container">
     <h1 class="content">プロフィール</h1>
   </div>
-  <div class="profile_main"> 
+  <div class="profile_main">
   <div class="profile_main2">
   <div class="profile_info">
     <div class="profile_info_a">
-      <div class="notice_container_item_image profile_image_area">
+      <div class="notice_container_item_image ">
+      <div class="profile_image_area">
       <div class="user_image2">
         <% if @user.image? %>                                                              
           <%= image_tag @user.image.url(:thumb), class: "image2" %>

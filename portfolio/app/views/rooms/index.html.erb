@@ -1,6 +1,6 @@
-<div class="main_container">
+<div class="microposts">
   <div class="title_container"> 
-    <h2 class="title">メッセージ</h2>
+    <h1 class="content">メッセージ</h1>
   </div> 
 
   <div class="notice_container">
@@ -14,6 +14,7 @@
            <% @roomId = cu.room_id %>
            <%#Roomから最後に更新したmessageを取得%>
            <% message = Room.find(@roomId).messages.last %>
+        <%if message %>
         <%=  link_to "/rooms/#{@roomId}" do %>
         <span class="notice_title"><%= user.name%></span>
         <%= message.content %>
@@ -24,6 +25,7 @@
             <% end %>
           </div>
           <% end %>
+        <%end%>
           <% end %>
           <% end %>
         <% end %>
