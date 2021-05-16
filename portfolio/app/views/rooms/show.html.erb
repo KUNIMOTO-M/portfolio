@@ -9,12 +9,20 @@
  <% @messages.each do |m| %>
   <div class="balloon_l">
     <% if m.user_id == current_user.id%>
-      <div class="faceicon"><%= image_tag m.user.image.url%></div>
+      <% if m.user.image %>
+        <div class="faceicon"><%= image_tag m.user.image.url%></div>
+      <% else %>
+        <img src="/assets/default.png" class="image2" alt="ユーザーアイコン" >
+      <%end%>
       <p class="says"><%= m.content %></p>   
   </div>
     <% else %>
   <div class="baloon_r">
-       <div class="faceicon"><%= image_tag m.user.image.url%></div>
+       <% if m.user.image %>
+        <div class="faceicon"><%= image_tag m.user.image.url%></div>
+      <% else %>
+        <img src="/assets/default.png" class="image2" alt="ユーザーアイコン" >
+      <%end%>
        <div class="says"><p><%= m.content %></p></div>
   </div>  
     <% end %>

@@ -11,6 +11,8 @@
       <div class="user_image2">
         <% if @user.image? %>                                                              
           <%= image_tag @user.image.url(:thumb), class: "image2" %>
+        <% else %>
+          <img src="/assets/default.png" class="image2" alt="ユーザーアイコン" >
         <% end %>
       </div>
       </div>

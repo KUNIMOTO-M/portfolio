@@ -1,22 +1,38 @@
-<h1>プロフィール編集</h1>
-<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-		<%= form_with model: @user do |f| %>
-		<%= render 'shared/error_messages', object: f.object %>
+<div class="microposts">
+	<div class="title_container">
+		<h1 class="content">プロフィール編集</h1>
+	</div>
 
-		<%= f.label :image %>
-		<%= f.file_field :image %>
+	<div class="u_edit_s">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+			<div class="u_set_container">
+			<%= form_with model: @user do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+				<div>
+				<%= f.label :image %>
+				<%= f.file_field :image , class: "form-control	u_set_li"%>
+				</div>
 
-		<%= f.label :name %>
-		<%= f.text_field :name %>
+				<div>
+				<%= f.label :name %>
+				<%= f.text_field :name , class: "form-control u_set_li"%>
+				</div>
 
-    <%= f.label :area %>
-    <%= f.select :area, User.areas.keys, {}, {class: 'hoge'} %>
+				<div>
+				<%= f.label	:自己紹介%>
+				<%= f.text_area :introduction, class: "form u_set_li aasa" %>
+				</div>
 
-    <%= f.label	:自己紹介	%>
-		<%= f.text_field :introduction, size: "40x20" %>
-	
-		<%= f.submit %>
-		<% end %>
+				<div>
+				<%= f.label :area %>
+				<%= f.select :area, User.areas.keys, {}, {class: 'hoge u_set_li'} %>
+				</div>
+
+				<%= f.submit"登録",	class: "btn btn-primary" %>
+			<% end %>
+			</div>
+			</div>
+		</div>
 	</div>
 </div>

@@ -1,25 +1,62 @@
-検索項目
-<%= link_to "掲示板", search_notices_path %>
-<%= link_to "ユーザー", search_users_path %>
-<%= link_to "マイクロポスト", search_microposts_path %>
+<div class="microposts">
+    <div class="title_container"> 
+      <h1 class="content">マイクロポスト検索</h1>
+    </div> 
 
-  <%= form_tag(search_microposts_path, :method => "get") do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag"キーワード検索", class: "btn btn-primary" %>
-  <% end %>
+ 
+<div class="notice_creater_container">
+  <div class="notice_creater">
+  
+      検索項目
+  <%= link_to "掲示板", search_notices_path %>
+  <%= link_to "ユーザー", search_users_path %>
+  <%= link_to "マイクロポスト", search_microposts_path %>
+
+    <%= form_tag(search_microposts_path, :method => "get") do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag"キーワード検索", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
 
 
-<% if @microposts  %>
-<% @microposts.each do |micropost| %>
-  <li>
-  <% if micropost.user.image? %>                                                              
-  <%= image_tag micropost.user.image.url %> 
-<% end %>
-    <span class="notice_title"><%= micropost.content %></span>
-    <span class="timestap">
-      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-    </span>
-  </li>
-<% end %>
-<% end %>
-
+ <div class="notice_container">
+  <% if @microposts%>
+        <%  @microposts.each do |micropost| %>
+          <div class="notice_container_item">
+            <div class="notice_container_item2">
+              <div class="notice_container_item_image">
+                <div class="user_image">
+                  <% if micropost.user.image? %>                                                              
+                    <%= image_tag micropost.user.image.url(:thumb100), class: "image" %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="microposts_contents">
+                <div class="microposts_info">
+                  <div class="microposts_info_user">
+                    <div class="micropost_user">
+                       <%= micropost.user.name%>
+                    </div>
+                    <div class="micropost_time">
+                        Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+                    </div>
+                  </div>
+                  <div class="microposts_delete">
+                    <%if current_user?(micropost.user)%>
+                      <%= link_to "削除", micropost_path(micropost.id), method: :delete,
+                                    data: { confirm: "You sure?"}%>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="micropost_content">
+                  <%= safe_join(micropost.content.split("\n"),tag(:br)) %>
+                </div>
+              </div>
+          </div>
+          </div>
+      <% end %>
+      <%end%>
+      </div>
+</div>

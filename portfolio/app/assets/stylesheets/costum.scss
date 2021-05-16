@@ -256,7 +256,7 @@ border-radius: 30px;
 
 .image {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
 }
@@ -267,6 +267,7 @@ border-radius: 30px;
   position: relative;
   overflow: hidden;
   border-radius: 140px; /*追加*/
+  margin-left: 20px;
 }
 
 .hero_p {
@@ -274,7 +275,7 @@ border-radius: 30px;
 }
 .image2 {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
 }
@@ -409,54 +410,58 @@ padding-top: 30px;
 }
 
 .notice_body {
+  font-size: 18px;
+}
+/*ユーザー編集*/
+
+.u_edit_s {
+  padding-top: 62px;
+}
+
+.u_set_container {
+  padding-top: 60px;
+}
+
+.aasa {
+  vertical-align:top;
+}
+
+.u_set_li {
+margin-bottom: 30px;
+}
+
+/* follow */
+.follow_container {
+  padding-top:62px;
+}
+
+.follow_set {
+  width: 399px;
+  text-align: center;
+  color: #ccc;
   font-size: 15px;
+  font-weight: bold;
 }
-/*
-.title_container{
-  width: 720px;
-  z-index:999;
-  background-color:whitesmoke;
-  position: fixed;
-}
-
-.title {
-  margin-left: 20px;
-}
-
-.notice_container {
-padding-top: 40px;
-background-color: #DDDDDD;
-}
-
-.notice_container_item {
-  padding: 20px 20px;
-  margin: 40px;
-  height: 200px;
+.follow_links{
+  height:50px;
+  background-color: #21054d;
   display: flex;
-  background-color:white;
-  border-radius: 40px;
 }
 
-.notice_title {
-  font-size: 20px;
+.ccc {
+  display: flex;
 }
 
-.notice_container_item_image {
-  width: 100px;
+.back_profile {
+  display: flex;
+  align-items: center;
 }
-.notice_container_item_info {
-  display: inline;
-  
-}
-.notice_creater {
-  width: 380px;
-  height: 100%;
-  position:fixed;
-  right:0;
-  top:0px;
-  background-color: #DDDDDD;
 
+.u_follow_container_item_only {
+  display: flex;
 }
+
+
 /* ダイレクトメッセージ */
 /*吹き出し*/
 .balloon_l,
