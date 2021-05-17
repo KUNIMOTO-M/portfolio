@@ -1,42 +1,58 @@
-<h1>DM</h1>
-
-<h4>参加者</h4>
-<% @entries.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%>さん</a></strong></h5>
-<% end %>
-
-<% if @messages.present? %>
- <% @messages.each do |m| %>
-  <div class="balloon_l">
-    <% if m.user_id == current_user.id%>
-      <% if m.user.image %>
-        <div class="faceicon"><%= image_tag m.user.image.url%></div>
-      <% else %>
-        <img src="/assets/default.png" class="image2" alt="ユーザーアイコン" >
-      <%end%>
-      <p class="says"><%= m.content %></p>   
+<div class="microposts">
+  <div class="title_container">
+    <h1 class="content">DM</h1>
   </div>
-    <% else %>
-  <div class="baloon_r">
-       <% if m.user.image %>
-        <div class="faceicon"><%= image_tag m.user.image.url%></div>
-      <% else %>
-        <img src="/assets/default.png" class="image2" alt="ユーザーアイコン" >
-      <%end%>
-       <div class="says"><p><%= m.content %></p></div>
-  </div>  
-    <% end %>
-  <% end %>
-  <% else %>
-    <h3 class="text-center">メッセージはまだありません</h3>
-  <% end %>
+  <div class="notice_container">
+    <div class="room_username_container">
+      <%= link_to "戻る", rooms_path , class:"back_link btn btn-primary"%>
+      <% @entries.each do |e| %>
+        <%if e.user.id != current_user.id%>
+         <a class="user_name2" href="/users/<%= e.user.id %>"><%= e.user.name%>さん</a>
+        <%end%>
+      <% end %>
+    </div>
+    <div class="message_container rooms">
+      <% if @messages.present? %>
+      <% @messages.each do |m| %>
+          <% if m.user_id == current_user.id%>
+          <div class="balloon_l">
+            <div class="notice_container_item_image">
+                <div class="user_image">
+                  <% if m.user.image? %>
+                    <div class="faceicon"><%= image_tag m.user.image.url(:thumb100), class: "image" %></div>
+                  <% else %>
+                    <img src="/assets/default.png" class="image2" >
+                  <%end%>
+                </div>
+              </div>
+            <p class="says s_color"><%= m.content %></p>   
+        </div>
+          <% else %>
+        <div class="balloon_r">
+         <p class="says"><%= m.content %></p>  
+          <div class="notice_container_item_image">
+              <div class="user_image">
+              <% if m.user.image? %>
+                <div class="faceicon"><%= image_tag m.user.image.url(:thumb100), class: "image"%></div>
+              <% else %>
+                <img src="/assets/default.png" class="image2" >
+              <%end%>
+              </div>
+          </div>
+        </div>  
+          <% end %>
+        <% end %>
+        <% else %>
+          <h3 class="text-center">メッセージはまだありません</h3>
+        <% end %>
 
-  <%= form_for @message do |f| %>
-  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <br>
-  <%= f.submit "投稿する" %>
-<% end %>
-
+        <%= form_for @message do |f| %>
+        <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <br>
+        <%= f.submit "投稿する" , class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>
 </div>
 

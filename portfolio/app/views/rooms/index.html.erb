@@ -7,28 +7,46 @@
   <%#@usersはやり取りしたことのあるユーザー%>
     <% @users.each do |user| %>
       <div class="notice_container_item">
-      <% #Entryとuserから同じroomをもつオブジェクトを見つける%>
-      <% @currentUserEntry.each do |cu| %>
-       <% user.entries.each do |u| %>
-         <% if cu.room_id == u.room_id then %>
-           <% @roomId = cu.room_id %>
-           <%#Roomから最後に更新したmessageを取得%>
-           <% message = Room.find(@roomId).messages.last %>
-        <%if message %>
-        <%=  link_to "/rooms/#{@roomId}" do %>
-        <span class="notice_title"><%= user.name%></span>
-        <%= message.content %>
-        <%= message.created_at %>
-          <div class="notice_container_item_image">
-            <% if user.image? %>                                                              
-              <%= image_tag user.image.url(:thumb100) %>
-            <% end %>
-          </div>
-          <% end %>
+        <div class="notice_container_item2">
+        <% #Entryとuserから同じroomをもつオブジェクトを見つける%>
+        <% @currentUserEntry.each do |cu| %>
+          <% user.entries.each do |u| %>
+              <% if cu.room_id == u.room_id then %>
+                <% @roomId = cu.room_id %>
+                <%#Roomから最後に更新したmessageを取得%>
+                <% message = Room.find(@roomId).messages.last %>
+                <%if message %>
+                  <%=  link_to "/rooms/#{@roomId}" do %>
+                  <div class="message_image_infos">
+                    <div class="notice_container_item_image">
+                      <div class="user_image">
+                        <% if user.image? %>                                                              
+                          <%= image_tag user.image.url(:thumb100), class: "image" %>
+                        <% end %>
+                      </div>
+                    </div>
+                       <div class="microposts_info">
+                    <div class="microposts_info_user">
+                      <div class="micropost_user">
+                        <%= user.name%>
+                      </div>
+                      <div class="micropost_time">
+                        Posted <%= time_ago_in_words(message.created_at) %> ago.
+                      </div>
+                    </div>
+                    </div>
+                  </div> 
+                  <div class="microposts_contents">
+                  <div class="micropost_content">
+                    <%= message.content %>
+                  </div>
+                  </div>
+                  <%end%>
+                <%end%>
+              <%end%>
+          <%end%>
         <%end%>
-          <% end %>
-          <% end %>
-        <% end %>
+        </div>
       </div>
     <% end %>
   </div>
