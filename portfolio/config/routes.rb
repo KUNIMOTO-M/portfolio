@@ -8,16 +8,13 @@ Rails.application.routes.draw do
   #deleteメソッドが使えない為getに変更
   delete '/logout',  to: 'sessions#destroy'
 
-  get  "upload", to: "pdfupload#new"
-  post "upload", to: "pdfupload#create"
-
-  resources :uploadedpdfs, only: [:index] do
-  end
   resources :microposts,          only: [:create, :destroy] do
     collection do
       get 'search'
     end
   end
+
+  resources :fileas,              only: [:new, :create, :destroy]
 
   resources :users  do
     collection do

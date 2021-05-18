@@ -13,6 +13,7 @@
 				<%= f.label :image %>
 				<%= f.file_field :image , class: "form-control	u_set_li"%>
 				</div>
+				<div>
 
 				<div>
 				<%= f.label :name %>
@@ -34,6 +35,7 @@
 			</div>
 			</div>
 		</div>
-		<%=link_to "pdfファイルをアップロード", upload_path%>
+
 	</div>
+	 <%= link_to "pdfをアップロード", new_filea_path %>
 </div>

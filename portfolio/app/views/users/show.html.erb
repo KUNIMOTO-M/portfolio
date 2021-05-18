@@ -57,16 +57,20 @@
           <%= link_to "マイクロポスト", "/users/#{current_user.id}"%>
         </div>
         <div class="profile_link_item">
-        　 <%= link_to "掲示板", "/users/#{current_user.id}/show2"%>
+          <%= link_to "掲示板", "/users/#{current_user.id}/show2"%>
         </div>
          <div class="profile_link_item">
-        　メディア
+          メディア
         </div>
       </div>  
-    <%= render "microposts_profile" %>
-        
-        </div>
-        </div>
+        <%if @files.blank?%>
+        <%else%>
+          <% @files.each do |file| %>
+            <object data="<%= file.file.url %>" type="application/pdf" width="200" height="300"></object>
+          <%end%>
+        <%end%>
+     </div>
+    </div>
   </div>
 </div>
 </div>

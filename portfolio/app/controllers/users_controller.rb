@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @files = @user.fileas
     #プロフィール画面で掲示板投稿を表示
     @notices = @user.notices
     @microposts = @user.microposts.paginate(page: params[:page])
@@ -153,7 +154,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :area, :introduction)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :file, :area, :introduction)
   end
 
   def correct_user
