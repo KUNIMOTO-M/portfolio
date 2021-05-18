@@ -5,9 +5,11 @@
             <div class="notice_container_item2">
               <div class="notice_container_item_image">
                 <div class="user_image">
-                  <% if micropost.user.image? %>                                                              
-                    <%= image_tag micropost.user.image.url(:thumb100), class: "image" %>
-                  <% end %>
+                <% if micropost.user.image? %>                                                              
+                  <%= image_tag notice.user.image.url(:thumb100), class: "image"%>
+                <% else %>
+                  <img src="/assets/default.png" class="image" alt="ユーザーアイコン" >
+                <% end %>
                 </div>
               </div>
               <div class="microposts_contents">

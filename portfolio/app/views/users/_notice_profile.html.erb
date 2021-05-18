@@ -5,9 +5,11 @@
         <%=  link_to notice_path(notice), class: "notice_container_item2" do %>
         <div class="notice_container_item_image">
           <div class="user_image">
-              <% if notice.user.image? %>                                                              
+            <% if notice.user.image? %>                                                              
                 <%= image_tag notice.user.image.url(:thumb100), class: "image"%>
-              <% end %>
+            <% else %>
+                <img src="/assets/default.png" class="image" alt="ユーザーアイコン" >
+            <% end %>
           </div>
         </div>
         <div class="microposts_contents"> 

@@ -52,19 +52,9 @@
             <% end %>
             <%= link_to "編集", edit_user_path(@user.id)  %>
           </div>
-      <div class="profile_link_wrapper">
-        <div class="profile_link_item">
-          <%= link_to "マイクロポスト", "/users/#{current_user.id}"%>
-        </div>
-        <div class="profile_link_item">
-        　 <%= link_to "掲示板", "/users/#{current_user.id}/show2"%>
-        </div>
-         <div class="profile_link_item">
-        　<%= link_to "メディア", "#"%>
-        </div>
-      </div>  
-    <%= render "microposts_profile" %>
-        
+          
+      <%= render "link_profile" %>
+      <%= render "files_profile"%>  
         </div>
         </div>
   </div>

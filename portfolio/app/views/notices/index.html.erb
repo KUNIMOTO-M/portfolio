@@ -12,6 +12,8 @@
           <div class="user_image">
               <% if notice.user.image? %>                                                              
                 <%= image_tag notice.user.image.url(:thumb100), class: "image"%>
+              <% else %>
+                <img src="/assets/default.png" class="image" alt="ユーザーアイコン" >
               <% end %>
           </div>
         </div>

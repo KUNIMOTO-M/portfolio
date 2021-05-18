@@ -1,0 +1,15 @@
+<div class="profile_link_wrapper">
+
+  <div class="profile_link_item">
+    <%= link_to "掲示板", "/users/#{current_user.id}",{class: "link_item_position"}%>
+  </div>
+
+  <div class="profile_link_item">
+    <%= link_to "マイクロポスト", "/users/#{current_user.id}/show2",{class: "link_item_position"}%>
+  </div>
+
+  <div class="profile_link_item">
+    <%= link_to "メディア", "/users/#{current_user.id}/show3",{class: "link_item_position"}%>
+  </div>
+
+</div>  

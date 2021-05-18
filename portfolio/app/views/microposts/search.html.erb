@@ -30,6 +30,8 @@
                 <div class="user_image">
                   <% if micropost.user.image? %>                                                              
                     <%= image_tag micropost.user.image.url(:thumb100), class: "image" %>
+                  <% else %>
+                    <img src="/assets/default.png" class="image" alt="ユーザーアイコン" >
                   <% end %>
                 </div>
               </div>

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      login(@user)
       redirect_to root_url
     else
       render 'new'
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @files = @user.fileas
     #プロフィール画面で掲示板投稿を表示
     @notices = @user.notices
     @microposts = @user.microposts.paginate(page: params[:page])
@@ -73,6 +73,7 @@ class UsersController < ApplicationController
   
   def show3
     @user = User.find_by(id: params[:id])
+    @files = @user.fileas
     #プロフィール画面で掲示板投稿を表示
     @notices = @user.notices
     @microposts = @user.microposts.paginate(page: params[:page])

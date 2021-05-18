@@ -33,9 +33,11 @@
           <div class="notice_container_item_image">
               <div class="user_image">
               <% if m.user.image? %>
-                <div class="faceicon"><%= image_tag m.user.image.url(:thumb100), class: "image"%></div>
+                <div class="faceicon">
+                  <%= image_tag m.user.image.url(:thumb100), class: "image"%>
+                </div>
               <% else %>
-                <img src="/assets/default.png" class="image2" >
+                <img src="/assets/default.png" class="image" >
               <%end%>
               </div>
           </div>

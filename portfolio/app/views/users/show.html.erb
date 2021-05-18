@@ -50,25 +50,15 @@
             <% if @user.introduction? %>
               <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
             <% end %>
-            <%= link_to "編集", edit_user_path(@user.id)  %>
           </div>
-      <div class="profile_link_wrapper">
-        <div class="profile_link_item">
-          <%= link_to "マイクロポスト", "/users/#{current_user.id}"%>
-        </div>
-        <div class="profile_link_item">
-          <%= link_to "掲示板", "/users/#{current_user.id}/show2"%>
-        </div>
-         <div class="profile_link_item">
-          メディア
-        </div>
-      </div>  
-        <%if @files.blank?%>
-        <%else%>
-          <% @files.each do |file| %>
-            <object data="<%= file.file.url %>" type="application/pdf" width="200" height="300"></object>
-          <%end%>
-        <%end%>
+          <% if @user == current_user %>
+            <div class="plofile_editer">
+              <div><%= link_to "編集", edit_user_path(@user.id)  %></div>
+              <div><%= link_to "pdfをアップロード", new_filea_path %></div>
+            </div>
+          <% end %>
+      <%= render "link_profile" %>
+      <%= render "notice_profile" %>
      </div>
     </div>
   </div>

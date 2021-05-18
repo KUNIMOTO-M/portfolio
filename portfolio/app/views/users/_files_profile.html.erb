@@ -1,0 +1,15 @@
+<div class="media_wrapper">
+  <%if @files.blank?%>
+  <%else%>
+    <div class="media_items">
+      <% @files.each do |file| %>
+        <div class="media_item">
+          <div class="media_item_title">
+          <%= file.title  %>
+          </div>
+          <object data="<%= file.file.url %>" type="application/pdf" width="200" height="300"></object>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
+</div>
