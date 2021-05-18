@@ -51,12 +51,6 @@
               <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
             <% end %>
           </div>
-          <% if @user == current_user %>
-            <div class="plofile_editer">
-              <div><%= link_to "編集", edit_user_path(@user.id)  %></div>
-              <div><%= link_to "pdfをアップロード", new_filea_path %></div>
-            </div>
-          <% end %>
       <%= render "link_profile" %>
       <%= render "notice_profile" %>
      </div>

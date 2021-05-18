@@ -1,15 +1,21 @@
+<% if @user == current_user %>
+  <div class="plofile_editer">
+    <div><%= link_to "編集", edit_user_path(@user.id)  %></div>
+    <div><%= link_to "pdfをアップロード", new_filea_path %></div>
+  </div>
+<% end %>
 <div class="profile_link_wrapper">
 
   <div class="profile_link_item">
-    <%= link_to "掲示板", "/users/#{current_user.id}",{class: "link_item_position"}%>
+    <%= link_to "掲示板", "/users/#{@user.id}",{class: "link_item_position"}%>
   </div>
 
   <div class="profile_link_item">
-    <%= link_to "マイクロポスト", "/users/#{current_user.id}/show2",{class: "link_item_position"}%>
+    <%= link_to "マイクロポスト", "/users/#{@user.id}/show2",{class: "link_item_position"}%>
   </div>
 
   <div class="profile_link_item">
-    <%= link_to "メディア", "/users/#{current_user.id}/show3",{class: "link_item_position"}%>
+    <%= link_to "メディア", "/users/#{@user.id}/show3",{class: "link_item_position"}%>
   </div>
 
 </div>  

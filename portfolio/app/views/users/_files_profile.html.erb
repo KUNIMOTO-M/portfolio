@@ -5,9 +5,15 @@
       <% @files.each do |file| %>
         <div class="media_item">
           <div class="media_item_title">
-          <%= file.title  %>
+          <%= file.title %>
           </div>
           <object data="<%= file.file.url %>" type="application/pdf" width="200" height="300"></object>
+          <% if @user == current_user %>
+          <div>
+            <%= link_to("削除", filea_path(file.id),  method: :delete,
+                                    data: { confirm: "You sure?"}, class: "link_item_position")%> 
+          </div>
+          <%end%>
         </div>
       <%end%>
     </div>

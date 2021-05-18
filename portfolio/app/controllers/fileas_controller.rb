@@ -17,11 +17,11 @@ class FileasController < ApplicationController
 
   def destroy
     @file = current_user.fileas.find_by(id: params[:id])
-		@Filea.destroy
+		@file.destroy
 		flash[:success] = "投稿を削除しました"
 		redirect_to "/users/#{current_user.id}/show3"
   end
-  
+
   private
 
   def filea_params

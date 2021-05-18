@@ -50,7 +50,6 @@
             <% if @user.introduction? %>
               <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
             <% end %>
-            <%= link_to "編集", edit_user_path(@user.id)  %>
           </div>
           
       <%= render "link_profile" %>

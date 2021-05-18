@@ -20,7 +20,6 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     #プロフィール画面で掲示板投稿を表示
     @notices = @user.notices
-    @microposts = @user.microposts.paginate(page: params[:page])
 
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
@@ -45,7 +44,6 @@ class UsersController < ApplicationController
   def show2
     @user = User.find_by(id: params[:id])
     #プロフィール画面で掲示板投稿を表示
-    @notices = @user.notices
     @microposts = @user.microposts.paginate(page: params[:page])
 
     @currentUserEntry=Entry.where(user_id: current_user.id)
