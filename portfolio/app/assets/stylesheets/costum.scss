@@ -359,6 +359,10 @@ padding-top: 30px;
   background-blend-mode:color;
 }
 
+.profile_wrapper {
+  padding:0 20px;
+}
+
 .profile_info {
   padding-top: 62px;
   padding-bottom: 50px;
@@ -370,6 +374,26 @@ padding-top: 30px;
 .profile_info_c {
   display: flex;
   justify-content: space-between;
+}
+
+.introduction_wrapper{
+  padding:0 20px;
+}
+.profile_link_wrapper {
+  height:40px;
+  background-color: #21054d;
+  display: flex;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 30px;
+}
+
+.profile_link_item {
+  width:266px;
+  color: #ccc;
+  text-align:center ;
+  font-weight: bold;
 }
 
 .user_name {

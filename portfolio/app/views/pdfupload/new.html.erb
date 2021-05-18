@@ -1,0 +1,16 @@
+<%= form_with model: @pdf, url: upload_path do |f| %>
+  <div>
+    <%= f.label "name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label "details" %>
+    <%= f.text_area :details %>
+  </div>
+  <div>
+    <%= f.label "select" %>
+    <%= f.file_field :pdf %>
+  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "send" %>
+<% end %>

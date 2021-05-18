@@ -28,6 +28,7 @@ class RoomsController < ApplicationController
    current_user_rooms =  user_rid.map do |id|
      Room.where(id: id)
    end
+
    #Room情報から共通するRoom_idを持つユーザー情報の取得
    users_array = current_user_rooms.map do |room|
      users = Entry.where(room_id: room.ids).where.not(user_id: current_user.id)
@@ -37,7 +38,9 @@ class RoomsController < ApplicationController
    end
    #配列が二重になったので苦肉の策
    @users = users_array.flatten
+  
    #自分のEntry情報を取得
    @currentUserEntry=Entry.where(user_id: current_user.id)
+
    end
 end

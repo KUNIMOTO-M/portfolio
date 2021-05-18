@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   #deleteメソッドが使えない為getに変更
   delete '/logout',  to: 'sessions#destroy'
 
+  get  "upload", to: "pdfupload#new"
+  post "upload", to: "pdfupload#create"
+
+  resources :uploadedpdfs, only: [:index] do
+  end
   resources :microposts,          only: [:create, :destroy] do
     collection do
       get 'search'
@@ -22,6 +27,8 @@ Rails.application.routes.draw do
     member do
       get 'following'
       get 'followers'
+      get 'show2'
+      get 'show3'
     end
   end
 

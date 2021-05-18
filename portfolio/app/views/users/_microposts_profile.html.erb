@@ -1,0 +1,38 @@
+    <div class="notice_container">
+      <% if @microposts %>
+        <%  @microposts.each do |micropost| %>
+          <div class="notice_container_item">
+            <div class="notice_container_item2">
+              <div class="notice_container_item_image">
+                <div class="user_image">
+                  <% if micropost.user.image? %>                                                              
+                    <%= image_tag micropost.user.image.url(:thumb100), class: "image" %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="microposts_contents">
+                <div class="microposts_info">
+                  <div class="microposts_info_user">
+                    <div class="micropost_user">
+                       <%= micropost.user.name%>
+                    </div>
+                    <div class="micropost_time">
+                        Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+                    </div>
+                  </div>
+                  <div class="microposts_delete">
+                    <%if current_user?(micropost.user)%>
+                      <%= link_to "削除", micropost_path(micropost.id), method: :delete,
+                                    data: { confirm: "You sure?"}%>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="micropost_content">
+                  <%= safe_join(micropost.content.split("\n"),tag(:br)) %>
+                </div>
+              </div>
+          </div>
+          </div>
+        <% end %>
+        <% end %>
+    </div>
