@@ -19,28 +19,28 @@ class RoomsController < ApplicationController
 
   def index
     #自分のエントリーを取得
-   user_entries = current_user.entries
-   #エントリーから所持するroom_idを取得
-   user_rid = user_entries.map do |entry|
-    entry.room_id
-   end
-   #room_idから所属するRoom情報を取得
-   current_user_rooms =  user_rid.map do |id|
-     Room.where(id: id)
-   end
+    user_entries = current_user.entries
+    #エントリーから所持するroom_idを取得
+    user_rid = user_entries.map do |entry|
+      entry.room_id
+    end
+    #room_idから所属するRoom情報を取得
+    current_user_rooms =  user_rid.map do |id|
+      Room.where(id: id)
+    end
 
-   #Room情報から共通するRoom_idを持つユーザー情報の取得
-   users_array = current_user_rooms.map do |room|
-     users = Entry.where(room_id: room.ids).where.not(user_id: current_user.id)
+    #Room情報から共通するRoom_idを持つユーザー情報の取得
+    users_array = current_user_rooms.map do |room|
+      users = Entry.where(room_id: room.ids).where.not(user_id: current_user.id)
       users.map do |user|
-       User.find_by(id: user.user_id)
+        User.find_by(id: user.user_id)
       end
-   end
-   #配列が二重になったので苦肉の策
-   @users = users_array.flatten
+    end
+    #配列が二重になったので苦肉の策
+    @users = users_array.flatten
   
-   #自分のEntry情報を取得
-   @currentUserEntry=Entry.where(user_id: current_user.id)
+    #自分のEntry情報を取得
+    @currentUserEntry=Entry.where(user_id: current_user.id)
 
-   end
+  end
 end

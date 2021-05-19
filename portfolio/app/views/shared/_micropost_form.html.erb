@@ -1,22 +1,24 @@
-    <div class="notice_container">
+<div class="notice_container">
       <% if @microposts %>
         <%  @microposts.each do |micropost| %>
           <div class="notice_container_item">
             <div class="notice_container_item2">
+            <%= link_to "/users/#{micropost.user.id}" do %>
               <div class="notice_container_item_image">
                 <div class="user_image">
-                <% if micropost.user.image? %>                                                              
-                  <%= image_tag micropost.user.image.url(:thumb100), class: "image"%>
-                <% else %>
-                  <img src="/assets/default.png" class="image" alt="ユーザーアイコン" >
-                <% end %>
+                  <% if micropost.user.image? %>                                                              
+                    <%= image_tag micropost.user.image.url(:thumb100), class: "image" %>
+                  <%  else %>
+                    <img src="/assets/default.png" class="image" alt="ユーザーアイコン" >
+                  <% end %>
                 </div>
               </div>
+                <%end%>
               <div class="microposts_contents">
                 <div class="microposts_info">
                   <div class="microposts_info_user">
                     <div class="micropost_user">
-                       <%= micropost.user.name%>
+                      <%= micropost.user.name%>
                     </div>
                     <div class="micropost_time">
                         Posted <%= time_ago_in_words(micropost.created_at) %> ago.
@@ -24,7 +26,7 @@
                   </div>
                   <div class="microposts_delete">
                     <%if current_user?(micropost.user)%>
-                      <%= link_to "削除", micropost_path(micropost.id),method: :delete,
+                      <%= link_to "削除", micropost_path(micropost.id), method: :delete,
                                     data: { confirm: "You sure?"}%>
                     <% end %>
                   </div>
@@ -38,3 +40,4 @@
         <% end %>
         <% end %>
     </div>
+  </div>

@@ -1,0 +1,36 @@
+<div class="profile_wrapper">
+              <div class="profile_info_b">
+                <div class="profile_info_c">
+                  <div class="profile_user_info">
+                    <div class="user_name">
+                      <%= @user.name%>
+                    </div>
+                    <p>登録地域　<%= @user.area%></p>
+                  </div>
+                  <div class="profile_icons">
+                    <%= render 'follow_form' if login? %>
+                    <% if @user.id == current_user.id %>
+                    <% else %>
+                      <% if @isRoom == true %>
+                        <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+                      <% else %>
+                        <%= form_for @room do |f| %>
+                          <%= fields_for @entry do |e| %>
+                            <%= e.hidden_field :user_id, :value=> @user.id %>
+                          <% end %>
+                          <%= f.submit "チャットを始める", class: "btn btn-primary" %>
+                        <% end %>
+                      <% end %>
+                    <%end%>
+                  </div>
+                </div>
+                <section class="stats">
+                  <%= render 'shared/stats' %>
+                </section>
+              </div>
+          </div>
+          <div class="introduction_wrapper">
+            <% if @user.introduction? %>
+              <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
+            <% end %>
+          </div>

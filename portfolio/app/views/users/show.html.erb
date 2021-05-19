@@ -6,46 +6,8 @@
       <div class="profile_main2">
           <div class="profile_info">
             <div class="profile_info_a">
-                <div class="profile_image_area">
-                  <div class="user_image2">
-                    <% if @user.image? %>                                                              
-                      <%= image_tag @user.image.url(:thumb), class: "image2" %>
-                    <% else %>
-                      <img src="/assets/default.png" class="image2" alt="ユーザーアイコン" >
-                    <% end %>
-                  </div>
-                </div>
-            <div class="profile_wrapper">
-              <div class="profile_info_b">
-                <div class="profile_info_c">
-                  <div class="profile_user_info">
-                    <div class="user_name">
-                      <%= @user.name%>
-                    </div>
-                    <p>登録地域　<%= @user.area%></p>
-                  </div>
-                  <div class="profile_icons">
-                    <%= render 'follow_form' if login? %>
-                    <% if @user.id == current_user.id %>
-                    <% else %>
-                      <% if @isRoom == true %>
-                        <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-                      <% else %>
-                        <%= form_for @room do |f| %>
-                          <%= fields_for @entry do |e| %>
-                            <%= e.hidden_field :user_id, :value=> @user.id %>
-                          <% end %>
-                          <%= f.submit "チャットを始める", class: "btn btn-primary" %>
-                        <% end %>
-                      <% end %>
-                    <%end%>
-                  </div>
-                </div>
-                <section class="stats">
-                  <%= render 'shared/stats' %>
-                </section>
-              </div>
-          </div>
+          <%= render "shared/user_image2" %>  
+          <%= render "userinfo_profile" %>
           <div class="introduction_wrapper">
             <% if @user.introduction? %>
               <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>

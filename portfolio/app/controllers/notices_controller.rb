@@ -19,22 +19,7 @@ before_action :correct_user,   only: :destroy
 		@user = @notice.user
 		@currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
-    if @user.id == current_user.id
-    else
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
-          end
-        end
-      end
-      if @isRoom
-      else
-        @room = Room.new
-        @entry = Entry.new
-      end
-    end
+    room
 	end
 
 	def search
@@ -42,7 +27,7 @@ before_action :correct_user,   only: :destroy
 			@notices = Notice.where(area: params[:area])
 		elsif params[:search]
 			if !params[:search].blank?
-			@notices = Notice.where("notice_title LIKE ? OR notice_body LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+				@notices = Notice.where("notice_title LIKE ? OR notice_body LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
 			end
 		else
 		end

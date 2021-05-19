@@ -1,0 +1,37 @@
+ <div class="notice_container">
+    <% if @notices %>
+      <% @notices.each do |notice| %>
+        <div class="notice_container_item post_back">
+          <%=  link_to notice_path(notice), class: "notice_container_item2" do %>
+            <div class="notice_container_item_image">
+              <div class="user_image">
+                  <% if notice.user.image? %>                                                              
+                    <%= image_tag notice.user.image.url(:thumb100), class: "image"%>
+                  <% else %>
+                    <img src="/assets/default.png" class="image" alt="ユーザーアイコン" >
+                  <% end %>
+              </div>
+            </div>
+            <div class="microposts_contents"> 
+              <div class="microposts_info">
+                <div class="microposts_info_user">
+                  <div class="micropost_user">
+                    投稿者: <%= notice.user.name%>
+                  </div>
+                  <div class="micropost_area">
+                    地域: <%= notice.area %>
+                  </div> 
+                  <div class="micropost_time">
+                    Posted <%= time_ago_in_words(notice.created_at) %> ago.
+                  </div>
+                </div>
+              </div>
+              <div class="notice_title">
+                <%= notice.notice_title %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>

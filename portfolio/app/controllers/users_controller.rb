@@ -17,85 +17,25 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    #プロフィール画面で掲示板投稿を表示
+    profile_show
     @notices = @user.notices
-
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
-    if @user.id == current_user.id
-    else
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
-          end
-        end
-      end
-      if @isRoom
-      else
-        @room = Room.new
-        @entry = Entry.new
-      end
-    end
   end
 
   def show2
-    @user = User.find_by(id: params[:id])
-    #プロフィール画面で掲示板投稿を表示
-    @microposts = @user.microposts.paginate(page: params[:page])
-
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
-    if @user.id == current_user.id
-    else
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
-          end
-        end
-      end
-      if @isRoom
-      else
-        @room = Room.new
-        @entry = Entry.new
-      end
-    end
+    profile_show
+    @microposts = @user.microposts
   end
+
+  def show3
+    profile_show
+    @files = @user.fileas
+  end
+
+
   def index
     @indeies = User.all
   end
   
-  def show3
-    @user = User.find_by(id: params[:id])
-    @files = @user.fileas
-    #プロフィール画面で掲示板投稿を表示
-    @notices = @user.notices
-    @microposts = @user.microposts.paginate(page: params[:page])
-
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
-    if @user.id == current_user.id
-    else
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
-          end
-        end
-      end
-      if @isRoom
-      else
-        @room = Room.new
-        @entry = Entry.new
-      end
-    end
-  end
-
 
   def edit
     @user = User.find_by(id: current_user)
@@ -160,7 +100,5 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
   end
-
-
   
 end

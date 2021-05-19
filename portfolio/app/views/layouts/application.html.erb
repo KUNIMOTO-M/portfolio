@@ -4,10 +4,10 @@
     <title>Myport | Home</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all',
-                               'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application',
-                               'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag   'application', media: 'all',
+                              'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag   'application',
+                              'data-turbolinks-track': 'reload' %>
     <!--[if lt IE 9]>
   <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
   </script>
@@ -35,50 +35,50 @@
         </div>
       </div>
       <% else %>
-      <div class="header active">
-        <div class="header_logo">
-          <h1 class="logo">
-            <a class="logo_link">
-              <%= link_to "PROTFOLIO", root_path, class: "logo_image"%>
-            </a>
-          </h1>
+        <div class="header active">
+          <div class="header_logo">
+            <h1 class="logo">
+              <a class="logo_link">
+                <%= link_to "PROTFOLIO", root_path, class: "logo_image"%>
+              </a>
+            </h1>
+          </div>
+          <nav class="global-nav">
+            <ul class="global-nav_list">
+              <li class="global-nav_item">
+                <a>
+                  <%= link_to "home", root_path, class: "global-nav_link" %>
+                </a>
+              </li>
+              <li class="global-nav_item">
+                <a>
+                  <%= link_to "about", about_path, class:"global-nav_link" %>
+                </a>
+              </li>
+              <li class="global-nav_item">
+                <a>
+                  <%= link_to "help", help_path, class:"global-nav_link"%>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav class="global-nav">
-         <ul class="global-nav_list">
-          <li class="global-nav_item">
-            <a>
-              <%= link_to "home", root_path, class: "global-nav_link" %>
-            </a>
-          </li>
-          <li class="global-nav_item">
-            <a>
-              <%= link_to "about", about_path, class:"global-nav_link" %>
-            </a>
-          </li>
-          <li class="global-nav_item">
-            <a>
-             <%= link_to "help", help_path, class:"global-nav_link"%>
-            </a>
-          </li>
-        </ul>
-        </nav>
-      </div>
       <% end %>
     <%if login?%>  
       <div class="main_container">
-      <% flash.each do |message_type, message|%>
-       <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
-      <% end %>
-      <%= yield %>
-    </div>
-    <% else %>
-    <div class="hero" style="height:	837px;">
         <% flash.each do |message_type, message|%>
           <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
         <% end %>
-      <%= yield %>
-    </div>
+        <%= yield %>
+      </div>
+    <% else %>
+      <div class="hero" style="height:	837px;">
+          <% flash.each do |message_type, message|%>
+            <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
+          <% end %>
+        <%= yield %>
+      </div>
     <% end %>
-   </div>
+  </div>
   </body>
 </html>

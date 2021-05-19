@@ -15,10 +15,10 @@ class MicropostsController < ApplicationController
   end
   
   def destroy
-     @micropost = current_user.microposts.find_by(id: params[:id])
-     @micropost.destroy
-     flash[:success] = "投稿を削除しました"
-     redirect_to root_url
+    @micropost = current_user.microposts.find_by(id: params[:id])
+    @micropost.destroy
+    flash[:success] = "投稿を削除しました"
+    redirect_to root_url
   end
 
   def search

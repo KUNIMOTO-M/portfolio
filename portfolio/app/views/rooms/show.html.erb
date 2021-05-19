@@ -7,7 +7,7 @@
       <%= link_to "戻る", rooms_path , class:"back_link btn btn-primary"%>
       <% @entries.each do |e| %>
         <%if e.user.id != current_user.id%>
-         <a class="user_name2" href="/users/<%= e.user.id %>"><%= e.user.name%>さん</a>
+          <a class="user_name2" href="/users/<%= e.user.id %>"><%= e.user.name%>さん</a>
         <%end%>
       <% end %>
     </div>
@@ -29,7 +29,7 @@
         </div>
           <% else %>
         <div class="balloon_r">
-         <p class="says"><%= m.content %></p>  
+          <p class="says"><%= m.content %></p>  
           <div class="notice_container_item_image">
               <div class="user_image">
               <% if m.user.image? %>
