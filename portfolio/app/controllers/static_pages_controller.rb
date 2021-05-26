@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     if user_signed_in?
-      @microposts = Micropost.all 
+      @microposts = Micropost.paginate(page: params[:page])
       @micropost  = Micropost.new 
     end
   end

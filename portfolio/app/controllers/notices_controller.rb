@@ -42,7 +42,7 @@ before_action :correct_user,   only: :destroy
 	end
 
 	def index
-		@notices = Notice.all
+		@notices = Notice.paginate(page: params[:page])
 		#同じページに投稿formを作る
 		@notice = Notice.new	
 	end

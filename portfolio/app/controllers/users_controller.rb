@@ -4,12 +4,12 @@ class UsersController < ApplicationController
 
   def show
     profile_show
-    @notices = @user.notices
+    @notices = @user.notices.paginate(page: params[:page])
   end
 
   def show2
     profile_show
-    @microposts = @user.microposts
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def show3
