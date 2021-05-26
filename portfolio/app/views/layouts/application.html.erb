@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myport | Home</title>
+    <title>SA | Home</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag   'application', media: 'all',
@@ -15,12 +15,12 @@
   </head>
   <body>
   <div class="wrap">
-      <% if login? %>
+      <% if user_signed_in? %>
       <div class="menu">
         <div class="menu_inner">
           <div class="hrader_logo">
             <h1 class="logo logo">
-              <%= link_to "PROTFOLIO", root_path, class: "logo_image" %>
+              <%= image_tag 'site_logo.png', class: "logo_image logo_iamage2" %>
             </h1>
           </div>
           <ul class="menu_list" >
@@ -29,8 +29,8 @@
             <li class="menu_list_li"> <%= link_to "掲示板", notices_path, class:"menu_list_item" %></li>
             <li class="menu_list_li"> <%= link_to "メッセージ", rooms_path, class:"menu_list_item" %></li>
             <li class="menu_list_li"> <%= link_to "プロフィール", "/users/#{current_user.id}", class:"menu_list_item" %></li>
-            <li class="menu_list_li"> <%= link_to "ログアウト", logout_path, method: :delete, class:"menu_list_item" %></li>
-            <li class="menu_list_li"> <%= link_to "設定", set_users_path, class:"menu_list_item" %></li>
+            <li class="menu_list_li"> <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトします？"}, class:"menu_list_item" %></li>
+            <li class="menu_list_li"> <%= link_to "設定", edit_user_registration_path, class:"menu_list_item" %></li>
           </ul> 
         </div>
       </div>
@@ -39,7 +39,7 @@
           <div class="header_logo">
             <h1 class="logo">
               <a class="logo_link">
-                <%= link_to "PROTFOLIO", root_path, class: "logo_image"%>
+                <%= link_to "SCIENCE ALLIANCE", root_path, class: "logo_image"%>
               </a>
             </h1>
           </div>
@@ -64,7 +64,7 @@
           </nav>
         </div>
       <% end %>
-    <%if login?%>  
+    <%if user_signed_in? %>  
       <div class="main_container">
         <% flash.each do |message_type, message|%>
           <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>

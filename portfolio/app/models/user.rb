@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+				 :confirmable, :omniauthable, omniauth_providers:[:twitter,:facebook]
 	mount_uploader :image, ImageUploader
 	has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -13,12 +18,6 @@ class User < ApplicationRecord
 	has_many :messages, dependent: :destroy
 	has_many :fileas,	dependent: :destroy
   has_many :entries, dependent: :destroy
-  has_secure_password
-  validates :name, presence: true, length: {maximum: 50 }
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-	validates :email, presence: true, length: { maximum: 255},
-										format: {with: VALID_EMAIL_REGEX},
-										uniqueness: true
 	validates :introduction, length: {maximum: 160}
 	#プロフィールのプルダウンメニュー
   enum area:{

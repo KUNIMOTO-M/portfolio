@@ -8,7 +8,7 @@
                     <p>登録地域　<%= @user.area%></p>
                   </div>
                   <div class="profile_icons">
-                    <%= render 'follow_form' if login? %>
+                    <%= render 'follow_form' if user_signed_in? %>
                     <% if @user.id == current_user.id %>
                     <% else %>
                       <% if @isRoom == true %>

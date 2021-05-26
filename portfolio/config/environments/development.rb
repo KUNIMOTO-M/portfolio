@@ -38,8 +38,10 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
+  config.web_console.whitelisted_ips = '172.23.0.1'
 
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise

@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'static_pages#home'
   get  '/about',    to: 'static_pages#about'
   get  '/help',     to: 'static_pages#help'
-  get  'sign_up',   to: 'users#new'
-  get  '/login',    to: 'sessions#new'
-  post '/login',    to: 'sessions#create'
-  #deleteメソッドが使えない為getに変更
-  delete '/logout',  to: 'sessions#destroy'
+  
 
   resources :microposts,          only: [:create, :destroy] do
     collection do

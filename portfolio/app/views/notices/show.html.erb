@@ -31,7 +31,7 @@
         <div class="u_post_link">
             <div class="timestamp">
                 Posted <%= time_ago_in_words(@notice.created_at) %> ago.
-                <% if current_user?(@notice.user)%>
+                <% if current_user == @notice.user %>
                   <%= link_to "delete", notice_path(@notice.id), method: :delete,
                                       data: { confirm: "You sure?"}%>
                 <% end %>

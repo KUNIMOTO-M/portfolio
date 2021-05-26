@@ -1,8 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
-    if login?
-    @microposts = Micropost.all 
-    @micropost  = Micropost.new 
+    if user_signed_in?
+      @microposts = Micropost.all 
+      @micropost  = Micropost.new 
     end
   end
 

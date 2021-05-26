@@ -16,10 +16,10 @@ h1 {
   text-align: center;
   }
 
- .title {
-   margin-top: 130px;
-   font-weight: bold;
- }
+.title {
+  margin-top: 130px;
+  font-weight: bold;
+  }
 
 .row {
     margin-right: -15px;
@@ -76,6 +76,11 @@ h1 {
   display: block;
   color: #fff;
   font-size: 25px;
+  margin:0 auto;
+}
+
+.logo_iamage2 {
+  padding-top: 40px;
 }
 
 .logo {
@@ -126,13 +131,26 @@ h1 {
 
 .btns {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
 .btn {
-  background-color: greenyellow;
+  background-color: darkblue;
   color: #fff;
   font-weight: bold;
+}
+.btn-color {
+  color:white;
+  margin:0 20px;
+}
+
+.btn-l {
+  margin-right: 50px;
+}
+
+
+.explanation-item {
+color:white;
 }
 
 .form-control {
@@ -160,7 +178,7 @@ h1 {
     height: 100%;
     background: #21054d;
 
- }
+    }
 
 .menu .menu_inner {
 height: 100%;
@@ -199,6 +217,9 @@ width: 300px;
   border-bottom: transparent;
   border-top: transparent;
   border-left: transparent;
+}
+.micropost_content2 {
+  text-align: center;
 }
 
 .title_container {
@@ -394,6 +415,7 @@ padding-top: 30px;
   color: #ccc;
   text-align:center ;
   font-weight: bold;
+  padding-top: 10px;
 }
 
 .user_name {
