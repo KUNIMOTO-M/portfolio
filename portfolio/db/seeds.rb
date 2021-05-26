@@ -1,7 +1,6 @@
 User.create!( name:  "Test User",
               email: "test@railstest.jp",
-              password: "foobar",
-              password_confirmation:  "foobar")
+              password: "foobar"  )
 
 99.times do |n|
   name = Faker::Name.name
@@ -9,8 +8,7 @@ User.create!( name:  "Test User",
   password = "password"
   User.create!( name: name,
                 email: email,
-                password:  password,
-                password_confirmation: password)
+                password:  password)
 end
 
 users = User.order(:created_at).take(20)

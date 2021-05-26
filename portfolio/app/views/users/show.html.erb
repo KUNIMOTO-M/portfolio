@@ -8,11 +8,6 @@
             <div class="profile_info_a">
           <%= render "shared/user_image2" %>  
           <%= render "userinfo_profile" %>
-          <div class="introduction_wrapper">
-            <% if @user.introduction? %>
-              <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
-            <% end %>
-          </div>
       <%= render "link_profile" %>
       <%= render "notice_profile" %>
      </div>

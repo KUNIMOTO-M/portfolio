@@ -1,7 +1,5 @@
 module SessionsHelper
 
-    #ログインする
-   
 
     
     

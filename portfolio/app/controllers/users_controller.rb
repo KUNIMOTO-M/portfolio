@@ -1,19 +1,6 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
 
-  def new
-    @user = User.new
-  end
-  
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      login(@user)
-      redirect_to root_url
-    else
-      render 'new'
-    end
-  end
 
   def show
     profile_show
@@ -51,12 +38,6 @@ class UsersController < ApplicationController
     
   end
 
-  def destroy
-  end
-
-  def set
-    @user = User.find_by(id: current_user)
-  end
   
   def search
     if params[:area]
@@ -97,7 +78,7 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    redirect_to(root_url) unless current_user == @user
   end
   
 end

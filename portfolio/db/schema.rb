@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2021_05_25_144831) do
 
   create_table "fileas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
-    t.text "content"
     t.string "file"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -107,7 +106,6 @@ ActiveRecord::Schema.define(version: 2021_05_25_144831) do
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
