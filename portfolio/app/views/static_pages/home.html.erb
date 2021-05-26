@@ -1,4 +1,4 @@
-<% if login? %>
+<% if user_signed_in? %>
   <div class="microposts">
     <div class="title_container"> 
       <h1 class="content">マイクロポスト</h1>
@@ -26,10 +26,10 @@
 				</div>
         <div class="btns">
           <button class="btn btn-primary">
-            <%= link_to "新規登録", sign_up_path  %>
+            <%= link_to "新規登録", new_user_registration_path  %>
           </button>
           <button class="btn btn-primary">
-            <%= link_to "ログイン", login_path %>
+            <%= link_to "ログイン", new_user_session_path %>
           </button>
 				</div>
 			</div>

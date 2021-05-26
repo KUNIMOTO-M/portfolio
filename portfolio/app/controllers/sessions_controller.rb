@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 	#アプリケーションコントローラーで定義
-	before_action :logged_in_user, only: [:destroy]
 
 	def new
 	end
@@ -18,7 +17,7 @@ class SessionsController < ApplicationController
 	end
         
 	def	destroy
-		log_out if login?
+		log_out if user_signed_in?
 		flash[:notice] = "ログアウトしました"
     redirect_to root_path    
 	end	 

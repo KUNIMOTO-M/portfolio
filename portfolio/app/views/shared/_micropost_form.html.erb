@@ -25,7 +25,7 @@
                     </div>
                   </div>
                   <div class="microposts_delete">
-                    <%if current_user?(micropost.user)%>
+                    <%if current_user == micropost.user %>
                       <%= link_to "削除", micropost_path(micropost.id), method: :delete,
                                     data: { confirm: "You sure?"}%>
                     <% end %>

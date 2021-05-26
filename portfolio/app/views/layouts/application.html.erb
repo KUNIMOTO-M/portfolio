@@ -15,7 +15,7 @@
   </head>
   <body>
   <div class="wrap">
-      <% if login? %>
+      <% if user_signed_in? %>
       <div class="menu">
         <div class="menu_inner">
           <div class="hrader_logo">
@@ -64,7 +64,7 @@
           </nav>
         </div>
       <% end %>
-    <%if login?%>  
+    <%if user_signed_in? %>  
       <div class="main_container">
         <% flash.each do |message_type, message|%>
           <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
